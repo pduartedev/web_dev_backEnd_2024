@@ -1,0 +1,1 @@
+// Este arquivo scripts.js está intencionalmente em branco.
