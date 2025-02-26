@@ -21,7 +21,7 @@ webproject
 │       └── scripts.js
 │   └── index.php
 ├── config
-│   └── config.php
+|   └── database.php
 ├── vendor
 ├── composer.json
 └── README.md
