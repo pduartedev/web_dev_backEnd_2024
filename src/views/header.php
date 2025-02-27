@@ -64,7 +64,7 @@ if (!isset($_SESSION['usuario'])) {
                         <div class="collapse" id="cadastros" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="adicionar_categoria.php" target="iframe">Categorias</a>
+                                <a class="nav-link" href="categoria/visualizar_categoria.php" target="iframe">Categorias</a>
                                 <a class="nav-link" href="#" target="iframe">Fornecedores</a>
                                 <a class="nav-link" href="#" target="iframe">Produtos</a>
                                 <a class="nav-link" href="#" target="iframe">Requisições</a>
@@ -109,7 +109,7 @@ if (!isset($_SESSION['usuario'])) {
         </div>
         <!-- Class para permitir que o conteúdo do iframe flua no espaço quando menu sair-->
         <div id="layoutSidenav_content"> 
-            <iframe src="dashboard.php" name="iframe" width="100%" height="100%"></iframe>
+            <iframe src="home.php" name="iframe" width="100%" height="100%"></iframe>
         </div>
     </div>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> -->
