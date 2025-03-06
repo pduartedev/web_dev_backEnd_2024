@@ -65,9 +65,9 @@ if (!isset($_SESSION['usuario'])) {
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="categoria/visualizar_categoria.php" target="iframe">Categorias</a>
-                                <a class="nav-link" href="#" target="iframe">Fornecedores</a>
-                                <a class="nav-link" href="#" target="iframe">Produtos</a>
-                                <a class="nav-link" href="#" target="iframe">Requisições</a>
+                                <a class="nav-link" href="fornecedor/visualizar_fornecedor.php" target="iframe">Fornecedores</a>
+                                <a class="nav-link" href="produto/visualizar_produto.php" target="iframe">Produtos</a>
+                                <a class="nav-link" href="requisicao/visualizar_requisicao.php" target="iframe">Requisições</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#relatorios">

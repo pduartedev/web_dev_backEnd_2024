@@ -7,12 +7,12 @@ if (!isset($_SESSION['usuario'])) {
 
 // Verificar se foi fornecido um ID
 if (!isset($_GET['id']) || empty($_GET['id'])) {
-    header('Location: visualizar_categoria.php');
+    header('Location: visualizar_requisicao.php');
     exit();
 }
 
-// Buscar os dados da categoria
-require_once '../../controllers/categoria/buscar_categoria.php';
+// Buscar os dados da requisição
+require_once '../../controllers/requisicao/buscar_requisicao.php';
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +23,7 @@ require_once '../../controllers/categoria/buscar_categoria.php';
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <title>Excluir Categoria</title>
+    <title>Excluir Requisição</title>
     <style>
         .container {
             margin: 0 auto;
@@ -35,27 +35,27 @@ require_once '../../controllers/categoria/buscar_categoria.php';
 <body>
     <div class="container">
         <div style="margin-top: 20px;">
-            <h3>Excluir categoria</h3>
+            <h3>Excluir requisição</h3>
         </div>
         
-        <?php if (isset($categoria)): ?>
+        <?php if (isset($requisicao)): ?>
             <div class="alert alert-warning">
-                <p>Tem certeza que deseja excluir a categoria: <strong><?php echo htmlspecialchars($categoria, ENT_QUOTES, 'UTF-8'); ?></strong>?</p>
+                <p>Tem certeza que deseja excluir a requisição: <strong><?php echo htmlspecialchars($descricao, ENT_QUOTES, 'UTF-8'); ?></strong>?</p>
             </div>
             
-            <form name="formulario" action="../../controllers/categoria/excluir_categoria.php" method="post">
-                <input type="hidden" name="id_categoria" value="<?php echo $id_categoria; ?>">
+            <form name="formulario" action="../../controllers/requisicao/excluir_requisicao.php" method="post">
+                <input type="hidden" name="id_requisicao" value="<?php echo $id_requisicao; ?>">
                 
                 <div style="text-align: center; margin-top: 20px;">
                     <button type="submit" class="btn btn-danger">Confirmar exclusão</button>
-                    <a href="visualizar_categoria.php" class="btn btn-default">Cancelar</a>
+                    <a href="visualizar_requisicao.php" class="btn btn-default">Cancelar</a>
                 </div>
             </form>
         <?php else: ?>
             <div class="alert alert-danger">
-                Categoria não encontrada!
+                Requisição não encontrada!
             </div>
-            <a href="visualizar_categoria.php" class="btn btn-primary">Voltar</a>
+            <a href="visualizar_requisicao.php" class="btn btn-primary">Voltar</a>
         <?php endif; ?>
     </div>
 </body>

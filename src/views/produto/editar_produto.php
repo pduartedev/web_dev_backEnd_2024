@@ -7,12 +7,12 @@ if (!isset($_SESSION['usuario'])) {
 
 // Verificar se foi fornecido um ID
 if (!isset($_GET['id']) || empty($_GET['id'])) {
-    header('Location: visualizar_categoria.php');
+    header('Location: visualizar_produto.php');
     exit();
 }
 
-// Buscar os dados da categoria
-require_once '../../controllers/categoria/buscar_categoria.php';
+// Buscar os dados do produto
+require_once '../../controllers/produto/buscar_produto.php';
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +23,7 @@ require_once '../../controllers/categoria/buscar_categoria.php';
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <title>Editar Categoria</title>
+    <title>Editar Produto</title>
     <style>
         .container {
             margin: 0 auto;
@@ -35,15 +35,18 @@ require_once '../../controllers/categoria/buscar_categoria.php';
 <body>
     <div class="container">
         <div style="margin-top: 20px;">
-            <h3>Editar categoria</h3>
+            <h3>Editar produto</h3>
         </div>
         
-        <?php if (isset($categoria)): ?>
-            <form name="formulario" action="../../controllers/categoria/atualizar_categoria.php" method="post">
-                <input type="hidden" name="id_categoria" value="<?php echo $id_categoria; ?>">
+        <?php if (isset($produto)): ?>
+            <form name="formulario" action="../../controllers/produto/atualizar_produto.php" method="post">
+                <input type="hidden" name="id_produto" value="<?php echo $id_produto; ?>">
                 
-                <label for="categoria">Nome da categoria</label>
-                <input type="text" name="categoria" class="form-control" value="<?php echo htmlspecialchars($categoria, ENT_QUOTES, 'UTF-8'); ?>" autocomplete="off" required>
+                <label for="produto">Nome do produto</label>
+                <input type="text" name="produto" class="form-control" value="<?php echo htmlspecialchars($produto, ENT_QUOTES, 'UTF-8'); ?>" autocomplete="off" required>
+                
+                <label for="preco">Preço</label>
+                <input type="text" name="preco" class="form-control" value="<?php echo htmlspecialchars($preco, ENT_QUOTES, 'UTF-8'); ?>" autocomplete="off" required>
                 
                 <label for="status">Status</label>
                 <select name="status" class="form-control">
@@ -53,7 +56,7 @@ require_once '../../controllers/categoria/buscar_categoria.php';
                 
                 <div style="text-align: center; margin-top: 20px;">
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#confSalvar">Atualizar</button>
-                    <a href="visualizar_categoria.php" class="btn btn-danger">Cancelar</a>
+                    <a href="visualizar_produto.php" class="btn btn-danger">Cancelar</a>
                 </div>
             </form>
             
@@ -77,9 +80,9 @@ require_once '../../controllers/categoria/buscar_categoria.php';
             </div>
         <?php else: ?>
             <div class="alert alert-danger">
-                Categoria não encontrada!
+                Produto não encontrado!
             </div>
-            <a href="visualizar_categoria.php" class="btn btn-primary">Voltar</a>
+            <a href="visualizar_produto.php" class="btn btn-primary">Voltar</a>
         <?php endif; ?>
     </div>
 </body>
