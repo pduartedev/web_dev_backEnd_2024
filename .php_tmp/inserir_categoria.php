@@ -8,30 +8,30 @@ if (!isset($_SESSION['usuario'])) {
 require_once '../../../config/database.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $id_fornecedor = intval($_POST['id_fornecedor']);
+    $categoria = htmlspecialchars(strip_tags($_POST['categoria']));
 
     $database = new Database();
     $db = $database->getConnection();
 
-    $query = "DELETE FROM fornecedor WHERE id_fornecedor = :id";
+    $query = "INSERT INTO categoria (categoria) VALUES (:categoria)";
     $stmt = $db->prepare($query);
-    $stmt->bindParam(':id', $id_fornecedor);
+    $stmt->bindParam(':categoria', $categoria);
 
     if ($stmt->execute()) {
-        $message = "Fornecedor excluído com sucesso!";
+        $message = "Registro salvo com sucesso!";
         $_SESSION['message'] = $message;
         $_SESSION['message_type'] = "success";
     } else {
-        $message = "Erro ao excluir fornecedor.";
+        $message = "Erro ao salvar o registro.";
         $_SESSION['message'] = $message;
         $_SESSION['message_type'] = "danger";
     }
     
-    // Redirecionar para a página de visualização após a exclusão
-    header('Location: ../../views/fornecedor/visualizar_fornecedor.php');
+    // Redirecionar para a página de visualização após a inserção
+    header('Location: ../../views/categoria/visualizar_categoria.php');
     exit();
 } else {
-    header('Location: ../../views/fornecedor/visualizar_fornecedor.php');
+    header('Location: ../../views/categoria/adicionar_categoria.php');
     exit();
 }
 ?>
