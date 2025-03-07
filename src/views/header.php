@@ -68,6 +68,7 @@ if (!isset($_SESSION['usuario'])) {
                                 <a class="nav-link" href="fornecedor/visualizar_fornecedor.php" target="iframe">Fornecedores</a>
                                 <a class="nav-link" href="produto/visualizar_produto.php" target="iframe">Produtos</a>
                                 <a class="nav-link" href="requisicao/visualizar_requisicao.php" target="iframe">Requisições</a>
+                                <a class="nav-link" href="usuario/visualizar_usuario.php" target="iframe">Usuários</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#relatorios">
