@@ -15,11 +15,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         
         $idrm = intval($_POST['idrm']);
-
-        // Verificar permissões - exemplo: apenas usuários que criaram a requisição ou administradores podem excluí-la
+        $user_aprovador = $_SESSION['usuario']; // O usuário atual é quem está aprovando
+        $situacao = "Aprovada";
+        
+        // Conexão com o banco de dados
         $database = new Database();
         $db = $database->getConnection();
         
+        // Verificar se a requisição existe e se já não está aprovada
         $query_check = "SELECT * FROM requisicao WHERE idrm = :id";
         $stmt_check = $db->prepare($query_check);
         $stmt_check->bindParam(':id', $idrm);
@@ -31,37 +34,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         $requisicao = $stmt_check->fetch(PDO::FETCH_ASSOC);
         
-        // Exemplo de verificação: apenas quem criou a requisição ou administradores podem excluir
-        // Descomentar se for implementar esta lógica
-        /*
-        if ($requisicao['user_requisicao'] != $_SESSION['usuario'] && $_SESSION['permissao'] != 'admin') {
-            throw new Exception("Você não tem permissão para excluir esta requisição.");
-        }
-        */
-        
-        // Se a requisição já foi aprovada, talvez não deva ser excluída
         if ($requisicao['situacao'] == 'Aprovada') {
-            throw new Exception("Não é possível excluir requisições já aprovadas.");
+            throw new Exception("Esta requisição já foi aprovada anteriormente.");
         }
 
-        // Query para excluir requisição
-        $query = "DELETE FROM requisicao WHERE idrm = :id";
+        // Atualizar a situação da requisição e registrar o aprovador
+        $query = "UPDATE requisicao SET 
+                    situacao = :situacao, 
+                    user_aprovador = :user_aprovador 
+                  WHERE idrm = :id";
+                  
         $stmt = $db->prepare($query);
+        $stmt->bindParam(':situacao', $situacao);
+        $stmt->bindParam(':user_aprovador', $user_aprovador);
         $stmt->bindParam(':id', $idrm);
 
         if ($stmt->execute()) {
-            $message = "Requisição excluída com sucesso!";
+            $message = "Requisição aprovada com sucesso!";
             $_SESSION['message'] = $message;
             $_SESSION['message_type'] = "success";
         } else {
-            throw new Exception("Erro ao excluir requisição: " . implode(", ", $stmt->errorInfo()));
+            throw new Exception("Erro ao aprovar requisição: " . implode(", ", $stmt->errorInfo()));
         }
         
     } catch (Exception $e) {
         // Log do erro
-        error_log("Erro na exclusão de requisição: " . $e->getMessage());
+        error_log("Erro na aprovação de requisição: " . $e->getMessage());
         
-        $message = "Erro ao excluir requisição: " . $e->getMessage();
+        $message = "Erro ao aprovar requisição: " . $e->getMessage();
         $_SESSION['message'] = $message;
         $_SESSION['message_type'] = "danger";
     }
