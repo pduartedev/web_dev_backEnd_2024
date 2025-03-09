@@ -60,10 +60,10 @@
                             </div>
                         </div>
                     </div>
-            </div>
-            <!--termina div da primeira row-->
-            <div class="row">
-                <div class="col-xl-6 col-md-6">
+                </div>
+                <!--termina div da primeira row-->
+                <div class="row">
+                    <div class="col-xl-6 col-md-6">
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-chart-area me-1"></i>
@@ -81,27 +81,9 @@
                             <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
                         </div>
                     </div>
-                <div class="col-xl-6 col-md-6">
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <i class="fas fa-chart-bar me-1"></i>
-                            RMs emitidas por mês (1)
-                        </div>
-                        <div class="card-body"><canvas id="grafico1" width="100%" height="40"></canvas></div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-md-6">
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-chart-bar me-1"></i>
-                                RMs emitidas por mês (2)
-                            </div>
-                            <div class="card-body"><canvas id="grafico2" width="100%" height="40"></canvas></div>
-                        </div>
-                    </div>
+                    <!-- <div class="col-xl-6 col-md-6"> <div class="card mb-4"> <div class="card-header"> <i class="fas fa-chart-bar me-1"></i> RMs emitidas por mês (1) </div> <div class="card-body"><canvas id="grafico1" width="100%" height="40"></canvas></div> </div> </div> <div class="col-xl-6 col-md-6"> <div class="card mb-4"> <div class="card-header"> <i class="fas fa-chart-bar me-1"></i> RMs emitidas por mês (2) </div> <div class="card-body"><canvas id="grafico2" width="100%" height="40"></canvas></div> </div> </div> --> </div>
             </div>
-    </div>
-    </main>
+        </main>
     </div>
     <script src="/webProject/public/js/scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
